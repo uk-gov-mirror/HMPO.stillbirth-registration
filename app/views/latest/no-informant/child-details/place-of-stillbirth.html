@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-Place of death – {{ serviceName }} – GOV.UK Prototype Kit
+Place of stillbirth – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,12 +21,13 @@ Place of death – {{ serviceName }} – GOV.UK Prototype Kit
 
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
+
           <span class="govuk-caption-l">Stillborn child's details</span>
           <h1 class="govuk-heading-l">
             Place of stillbirth
           </h1>
           
-          <form class="form" action="/latest/no-informant/place-of-stillbirth-form" method="post">
+          <form class="form" action="/latest/informant/place-of-stillbirth-form" method="post">
 
             <div class="govuk-form-group">
               <fieldset class="govuk-fieldset" id="placeOfDeath">
@@ -100,7 +101,7 @@ Place of death – {{ serviceName }} – GOV.UK Prototype Kit
                   <div class="govuk-form-group">
               <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                  Place of death
+                  Place of stillbirth
                 </legend>
                 <div class="govuk-form-group">
                   <label class="govuk-label govuk-label--xs" id="MCCDAddressLine1-label" for="MCCDAddressLine1">
@@ -126,7 +127,7 @@ Place of death – {{ serviceName }} – GOV.UK Prototype Kit
               <div class="govuk-form-group">
               <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                  Place of death
+                  Place of stillbirth
                 </legend>
                 <div class="govuk-form-group">
                   <label class="govuk-label govuk-label--xs" id="MCCDAddressLine1-label" for="MCCDAddressLine1">
@@ -151,19 +152,19 @@ Place of death – {{ serviceName }} – GOV.UK Prototype Kit
               <div class="govuk-form-group">
               <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                  Place of death
+                  Place of stillbirth
                 </legend>
                 <div class="govuk-form-group">
                   <label class="govuk-label govuk-label--xs" id="MCCDAddressLine1-label" for="MCCDAddressLine1">
-                    Where did the person die?
+                    Where did the stillbirth occur?
                   </label>
                   <div id="in-transit-hint" class="govuk-hint">
-                  The location of their death, for example the district, town or civil parish
+                  The location of the stillbirth, for example the district, town or civil parish
                 </div>
                   <input class="govuk-input govuk-!-width-full" id="MCCDAddressLine1" name="MCCDAddressLine1" type="text" aria-required="false" value="">
                 
                   <label class="govuk-label govuk-label--xs govuk-!-margin-top-4" id="MCCDAddressLine1-label" for="MCCDAddressLine1">
-                    Where was the person on the way to when they died?
+                    Where was the mother on the way to when the stillbirth occurred?
                   </label>
                   <div id="in-transit-hint" class="govuk-hint">
                     Search for the communal establishment address
@@ -192,7 +193,7 @@ Place of death – {{ serviceName }} – GOV.UK Prototype Kit
               var elsewhere = `
               <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                  Place of death
+                  Place of stillbirth
                 </legend>
               <div class="govuk-form-group">
                 <label class="govuk-label" for="address-line-1">
