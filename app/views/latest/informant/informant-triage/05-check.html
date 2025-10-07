@@ -114,7 +114,8 @@ href: "javascript:window.history.back()"
         <dd class="govuk-summary-list__value">
           {% set whoElseDetailsText = {
           "whoElseFather": "Father",
-          "whoElseSecondParent": "Second Parent"
+          "whoElseSecondParent": "Second Parent",
+          "whoElseNone": "None"
           } %}
           {{ whoElseDetailsText[data['whoElseDetails']] or "Father" }}
         </dd>
