@@ -38,7 +38,7 @@ router.post('/latest/task-list-form', function (req, res) {
     res.redirect('no-informant/task-list');
   } else {
     // Handle unexpected values (optional)
-    res.redirect('informant/task-list'); // Redirect back to the form if no valid option is selected
+    res.redirect('informant/informant-triage/01-who-is-informant'); // Redirect back to the form if no valid option is selected
   }
 });
 
