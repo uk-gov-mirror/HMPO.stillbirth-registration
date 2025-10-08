@@ -1,0 +1,113 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back to record",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">
+        Check record details
+      </h1>
+
+ {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{{ govukInsetText({
+  text: "You cannot edit these details. You need to start a new registration and delete this one, if they are not correct."
+}) }}
+      
+ <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Informant
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% set whoIsInformantText = {
+          "mother": "Motherr",
+          "father": "Father",
+          "secondParent": "Second parent",
+          "motherAndFather": "Mother and father",
+          "motherAndParent": "Second parent",
+          "otherInformant": "Other"
+          } %}
+          {{ whoIsInformantText[data['whoIsInformant']] or "Mother" }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <!-- <a class="govuk-link" href="01-who-is-informant">Change<span class="govuk-visually-hidden"> date of
+              birth</span></a> -->
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Evidence or permission
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% set whatEvidenceText = {
+          "evidenceReg": "Evidence of informant identity seen",
+          "evidenceRegGen": "Registrar General discretion applied",
+          "evidenceNone": "None"
+          } %}
+          {{ whatEvidenceText[data['whatEvidence']] or "Evidence of informant identity seen" }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <!-- <a class="govuk-link" href="02-evidence">Change<span class="govuk-visually-hidden"> customer
+              reference</span></a> -->
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Parents married or in a civil partnership
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% set marriedOrCivilPartnershipText = {
+          "married": "Married",
+          "civilPartnership": "Civil partnership",
+          "marriedNeither": "Neither"
+          } %}
+          {{ marriedOrCivilPartnershipText[data['marriedOrCivilPartnership']] or "Married" }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <!-- <a class="govuk-link" href="03-married">Change<span class="govuk-visually-hidden"> customer
+              reference</span></a> -->
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Other details to be recorded
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% set whoElseDetailsText = {
+          "whoElseFather": "Father",
+          "whoElseSecondParent": "Second Parent"
+          } %}
+          {{ whoElseDetailsText[data['whoElseDetails']] or "Father" }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <!-- <a class="govuk-link" href="04-who-else">Change<span class="govuk-visually-hidden"> address</span></a> -->
+        </dd>
+      </div>
+
+    </dl>
+
+      <form action="../task-list" method="post" novalidate>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+
+{% endblock %}

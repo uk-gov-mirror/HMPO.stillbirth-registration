@@ -1,0 +1,81 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+<span class="govuk-caption-l">Submit the registration</span>
+      <h1 class="govuk-heading-xl">
+        Declarations
+      </h1>
+      
+
+ 
+
+
+
+  <div class="govuk-grid-row govuk-grid-column-full">
+    {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+{{ govukCheckboxes({
+  name: "waste",
+  fieldset: {
+    legend: {
+      text: " ",
+      isPageHeading: false,
+      classes: "govuk-body"
+    }
+  },
+
+  items: [
+    {
+      value: "farm",
+      text: "Informant has confirmed that the particulars given by them are true to the best of their knowledge and belief."
+    }
+  ]
+}) }}
+  </div>
+
+    <div class="govuk-grid-row govuk-grid-column-full">
+    {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+{{ govukCheckboxes({
+  name: "waste",
+  fieldset: {
+    legend: {
+      text: " ",
+      isPageHeading: false,
+      classes: "govuk-body"
+    }
+  },
+
+  items: [
+    {
+      value: "farm",
+      text: "Registrar is satisfied that all specified requirements have been met."
+    }
+  ]
+}) }}
+  </div>
+
+      <form action="confirmation-page" method="post" novalidate>
+
+        {{ govukButton({
+          text: "Complete registration"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

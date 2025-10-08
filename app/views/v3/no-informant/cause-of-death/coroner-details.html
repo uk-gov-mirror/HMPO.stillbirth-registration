@@ -1,0 +1,122 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back to record",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">Source of medical information</span>
+    <h1 class="govuk-heading-l">
+      Coroner details
+    </h1>
+
+
+
+    <form class="form" action="/v3/no-informant/coroner-details-form" method="post">
+
+
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Date signed by coroner</legend>
+              <div id="dateSignedByCoroner-hint" class="govuk-hint">For example, 23 11 2024</div>
+              <div id="dateSignedByCoroner_input" class="govuk-date-input">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label"
+                      for="dateSignedByCoroner_input-day">Day</label><input id="dateSignedByCoroner_input-day"
+                      name="dateSignedByCoroner_input-day" inputmode="number" maxlength="2"
+                      class="govuk-input govuk-input--width-2" aria-describedby="dateSignedByCoroner-hint"
+                      autocomplete="off" value=""></div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label"
+                      for="dateSignedByCoroner_input-month">Month</label><input id="dateSignedByCoroner_input-month"
+                      name="dateSignedByCoroner_input-month" inputmode="number" maxlength="2"
+                      class="govuk-input govuk-input--width-2" aria-describedby="dateSignedByCoroner-hint"
+                      autocomplete="off" value=""></div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label"
+                      for="dateSignedByCoroner_input-year">Year</label><input id="dateSignedByCoroner_input-year"
+                      name="dateSignedByCoroner_input-year" inputmode="number" maxlength="4"
+                      class="govuk-input govuk-input--width-4" aria-describedby="dateSignedByCoroner-hint"
+                      autocomplete="off" value=""></div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="govuk-form-group"><label class="govuk-label govuk-!-font-weight-bold" for="coronerName_input">Full
+              name</label><input id="coronerName_input" name="coronerName_input"
+              class="govuk-input govuk-input--width-20" autocomplete="off" value=""></div>
+          <div class="govuk-form-group"><label class="govuk-label govuk-!-font-weight-bold"
+              for="coronerDistrict_input">District</label><input id="coronerDistrict_input" name="coronerDistrict_input"
+              class="govuk-input govuk-input--width-20" autocomplete="off" value=""></div>
+          <div class="govuk-form-group"><label class="govuk-label govuk-!-font-weight-bold"
+              for="coronerArea_input">Area</label><input id="coronerArea_input" name="coronerArea_input"
+              class="govuk-input govuk-input--width-20" autocomplete="off" value=""></div>
+          <h2 class="govuk-heading-s">Designation</h2>
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <div class="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" type="radio"
+                    id="coronerDesignation-1" name="coronerDesignation" value="Assistant Coroner"><label
+                    class="govuk-label govuk-radios__label" for="coronerDesignation-1">Assistant Coroner</label>
+                  </div>
+                <div class="govuk-radios__item"><input class="govuk-radios__input" type="radio"
+                    id="coronerDesignation-2" name="coronerDesignation" value="Senior Coroner"><label
+                    class="govuk-label govuk-radios__label" for="coronerDesignation-2">Senior Coroner</label>
+                  </div>
+                <div class="govuk-radios__item"><input class="govuk-radios__input" type="radio"
+                    id="coronerDesignation-3" name="coronerDesignation" value="Deputy Coroner"><label
+                    class="govuk-label govuk-radios__label" for="coronerDesignation-3">Deputy Coroner</label>
+                  </div>
+                <div class="govuk-radios__item"><input class="govuk-radios__input" type="radio"
+                    id="coronerDesignation-4" name="coronerDesignation" value="Area Coroner"><label
+                    class="govuk-label govuk-radios__label" for="coronerDesignation-4">Area Coroner</label>
+                  </div>
+                <div class="govuk-radios__item"><input class="govuk-radios__input" type="radio"
+                    id="coronerDesignation-5" name="coronerDesignation" value="Coroner"><label
+                    class="govuk-label govuk-radios__label" for="coronerDesignation-5">Coroner</label>
+                  </div>
+                <div class="govuk-radios__item"><input class="govuk-radios__input" type="radio"
+                    id="coronerDesignation-6" name="coronerDesignation" value="Other"><label
+                    class="govuk-label govuk-radios__label" for="coronerDesignation-6">Other</label>
+                  </div>
+              </div>
+            </fieldset>
+          </div>
+        </fieldset>
+      </div>
+
+
+
+
+
+
+
+
+      {{ govukButton({
+      text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+
+{% endblock %}

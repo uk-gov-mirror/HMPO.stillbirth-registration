@@ -1,0 +1,105 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Select the registrar’s designation – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+
+
+
+  {{ govukBackLink({
+  text: "Back to record",
+  href: "javascript:window.history.back()"
+}) }}
+
+
+{% endblock %}
+
+{% block content %}
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <span class="govuk-caption-l">Submit the registration</span>
+          <h1 class="govuk-heading-l">
+            Register page 
+          </h1>
+          <form class="form" action="/v3/no-informant/register-page-form" method="post">
+            
+
+       <div class="govuk-form-group">
+  <label class="govuk-label govuk-label--s" for="registrar-name">
+    Registrar's name
+  </label>
+  <input class="govuk-input govuk-!-width-three-quarters" id="registrar-name" name="registrarName"
+         type="text" value="{{ data['registrarName'] }}">
+</div>
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="designationSelector-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      Select designation
+    </legend>
+
+    <div class="govuk-radios" data-module="govuk-radios">
+      <!-- Option 1: Registrar -->
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="designation-registrar" name="designationSelector"
+               type="radio" value="REGISTRAR">
+        <label class="govuk-label govuk-radios__label" for="designation-registrar">
+          Registrar
+        </label>
+      </div>
+
+      <!-- Option 2: Deputy Registrar -->
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="designation-deputy-registrar" name="designationSelector"
+               type="radio" value="DEPUTY_REGISTRAR">
+        <label class="govuk-label govuk-radios__label" for="designation-deputy-registrar">
+          Deputy Registrar
+        </label>
+      </div>
+
+      <!-- Option 3: Interim Registrar -->
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="designation-interim-registrar" name="designationSelector"
+               type="radio" value="INTERIM_REGISTRAR">
+        <label class="govuk-label govuk-radios__label" for="designation-interim-registrar">
+          Interim Registrar
+        </label>
+      </div>
+
+      <!-- Option 4: Interim Deputy Registrar -->
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="designation-interim-deputy-registrar" name="designationSelector"
+               type="radio" value="INTERIM_DEPUTY_REGISTRAR">
+        <label class="govuk-label govuk-radios__label" for="designation-interim-deputy-registrar">
+          Interim Deputy Registrar
+        </label>
+      </div>
+    </div>
+
+
+               
+
+              
+
+              </fieldset>
+            </div>
+  
+            <div class="govuk-button-group">
+              {{ govukButton({
+                text: "Save and return"
+              }) }}
+            </div>
+  
+          </form>
+  
+        </div>
+      </div>
+  
+
+
+{% endblock %}

@@ -1,0 +1,183 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <span class="govuk-caption-l">Source of medical information</span>
+      <h1 class="govuk-heading-l">
+        Medical cause of death details
+      </h1>
+
+ 
+        <h2 class="govuk-heading-s">Source</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-3">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Source of information for this stillbirth
+            </dt>
+            <dd class="govuk-summary-list__value">
+              
+  Coroner's inquest (99A)
+
+              <p class="govuk-task-list__hint">You can't change the certificate type</p>
+            </dd>
+            <!-- <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+            </dd> -->
+          </div>
+          </dl>
+
+      
+       
+ <h2 class="govuk-heading-s">Cause of death</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Number circled on the medical certificate
+            </dt>
+            <dd class="govuk-summary-list__value">
+
+
+ {% set option_circledText = {
+      "post_mortem": "1 - The certified cause of death has been confirmed by post-mortem",
+      "available_later": " 2 - Information from the post-mortem may be available later",
+      "no_post_mortem": " 3 - Post-mortem is not being held",
+      "none_circled": "None circled"
+    } %}
+    {{ option_circledText[data['option_circled']] or "1 - The certified cause of death has been confirmed by post-mortem" }}
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="cause-of-death.html">Change<span class="govuk-visually-hidden"> number circled</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              a. Main disease or conditions in the child
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['CauseOfDeath-a'] or "Placental insufficiency" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="cause-of-death.html">Change<span class="govuk-visually-hidden"> a</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              b. other disease or condition affecting the child
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{ data['causeOfdeath1b'] or "None" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="cause-of-death.html">Change<span class="govuk-visually-hidden"> b</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              c. Maternal disease or conditions affecting the child
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{ data['CauseOfDeath-c'] or "Pre-eclampsia" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="cause-of-death.html">Change<span class="govuk-visually-hidden"> c</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              d. other maternal disease or condition affecting the child
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{ data['causeOfdeathd'] or "None" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="cause-of-death.html">Change<span class="govuk-visually-hidden"> d</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              e. other relevant causes
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{ data['causeOfdeath2'] or "None" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="cause-of-death.html">Change<span class="govuk-visually-hidden"> e</span></a>
+            </dd>
+          </div>
+        </dl>
+         <h2 class="govuk-heading-s">Certifying midwife or practitioer</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Full name
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{ data['AttendPractfn'] or "Mary Fedowski" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="cause-of-death.html">Change<span class="govuk-visually-hidden"> practitioner</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Qualifications
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['AttendPractq'] or "Midwife" }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="cause-of-death.html">Change<span class="govuk-visually-hidden"> qualifications</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              NMC or GMC number
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{ data['AttendPractGMCNumber'] or "84937421" }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="cause-of-death.html">Change<span class="govuk-visually-hidden"> registered number</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Full name of the mother's consultant (if provided)
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{ data['AttendPractmc'] or "None given" }}  
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="cause-of-death.html">Change<span class="govuk-visually-hidden"> mother's consultant</span></a>
+            </dd>
+          </div>
+        </dl>
+     
+
+      <form action="/v3/no-informant/medical-info-check-form" method="post" novalidate>
+
+        {{ govukButton({
+          text: "Save and return"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+
+{% endblock %}

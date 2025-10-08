@@ -1,0 +1,92 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Cause of death – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+
+
+
+  {{ govukBackLink({
+  text: "Back to record",
+  href: "javascript:window.history.back()"
+}) }}
+
+<a class="govuk-link govuk-link--no-visited-state" href="" style="display: inline-block; position: relative; float: right; top: 15px;">View accented characters (opens in new window)</a>
+
+
+{% endblock %}
+
+{% block content %}
+
+
+  
+  
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <span class="govuk-caption-l">Source of medical information</span>
+          <h1 class="govuk-heading-l">
+           Why is a medical certificate not available?
+          </h1>
+
+          <form class="form" action="/v3/informant/f35-reason-form" method="post">
+
+            <!-- <h2 class="govuk-heading-m govuk-!-margin-bottom-6">
+              Certificate from a registered midwife or medical practitioner is not available (form 35)
+            </h2> -->
+
+
+            
+  
+
+
+          
+
+            <div class="govuk-form-group" id="codid">
+              <fieldset class="govuk-fieldset" id="MCCDcause-of-death" aria-required="false">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                  <h3 class="govuk-fieldset__heading">
+                    Certificate from a registered midwife or medical practitioner is not available (form 35)
+                  </h3>
+              </legend>
+
+      
+
+                {{ govukTextarea({
+                  name: "f35-reason",
+                  value: data['f35-reason'] or [''],
+                  id: "f35-reason"
+                  
+                }) }}
+
+
+            
+                
+           
+
+                  
+            </fieldset>
+            </div>
+
+         
+
+            
+
+
+
+
+
+        <div class="govuk-button-group">
+              <button type="submit" class="govuk-button govuk-button--primary" data-module="govuk-button">
+                Continue
+              </button>
+        </div>
+        </form>
+      </div>
+    
+  
+
+
+{% endblock %}
