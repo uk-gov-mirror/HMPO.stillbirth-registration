@@ -1,0 +1,56 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+
+{{ govukPhaseBanner({
+  tag: {
+    text: "Prototype"
+  },
+  html: 'This is a prototype, not the real service.'
+}) }}
+
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Life event home
+      </h1>
+
+
+<div class="govuk-!-padding-bottom-6">
+<h2 class="govuk-heading-m">Births</h2>
+      
+        <ul class="govuk-list">
+           <li><a class="govuk-link" href="../births/v1/02-search.html">Register a birth</a>
+          </li>
+          <li><a class="govuk-link" href="02b-notifications">Register a stillbirth</a>
+          </li>
+          <li><a class="govuk-link" href="#">Re-register a birth</a>
+          </li>
+        </ul>
+        
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">    
+</div>
+      
+<div class="govuk-!-padding-bottom-6">
+<h2 class="govuk-heading-m">Deaths</h2> 
+ <ul class="govuk-list">
+          <li><a class="govuk-link" href="#">Register a death or view pending</a>
+          </li>
+        </ul>   
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">  
+</div>
+    </div>
+  </div>
+
+{% endblock %}
