@@ -1,0 +1,73 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- <h1 class="govuk-heading-l">
+        Was more than one child born in this pregnancy?
+      </h1> 
+      <p>
+          This includes both live births and stillbirths.
+        </p>
+      -->
+
+      <form class="form" action="04-medical-info" method="post">
+<span class="govuk-caption-l"> SHORT, Celine pregnancy</span>
+       
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  name: "whereDoYouLive",
+  fieldset: {
+    legend: {
+      text: "Was more than one child born in this pregnancy?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  hint: {
+    text: "This includes both live births and stillbirths"
+  },
+
+  items: [
+    {
+      value: "no",
+      text: "No"
+    },
+    {
+      value: "yes",
+      text: "Yes"
+    }
+  ]
+}) }}
+
+
+
+
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

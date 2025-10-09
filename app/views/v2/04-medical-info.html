@@ -19,7 +19,7 @@
 <span class="govuk-caption-l">Add record details</span>
 <h1 class="govuk-heading-l">Where is the medical information about the stillbirth taken from?</h1>
 
-<form class="form" method="POST" action="/latest/task-list-form">
+<form class="form" method="POST" action="/v2/task-list-form">
   
   {% from "govuk/components/radios/macro.njk" import govukRadios %}
   {{ govukRadios({
@@ -44,7 +44,7 @@
       },
       {
         value: "4-informant",
-        text: "Self declaration - no certificate from a medical practitioner available (form 35)"
+        text: "Certificate from a registered midwife or medical practitioner is not available (form 35)"
       }
     ]
   }) }}

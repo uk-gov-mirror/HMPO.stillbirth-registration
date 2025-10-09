@@ -22,6 +22,10 @@ require('./views/v1/no-informant/_routes')(router);
 
 require('./views/births/v1/_routes')(router);
 
+require('./views/v2/_routes')(router);
+require('./views/v2/informant/_routes')(router);
+require('./views/v2/no-informant/_routes')(router);
+
 require('./views/v3/_routes')(router);
 require('./views/v3/informant/_routes')(router);
 require('./views/v3/no-informant/_routes')(router);

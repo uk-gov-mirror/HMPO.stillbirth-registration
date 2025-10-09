@@ -29,9 +29,9 @@ href: "javascript:window.history.back()"
           Name, sex and date of stillbirth
         </h1>
 
-        <form class="form" action="/v3/informant/name-date-form" method="post">
+        <form class="form" action="/v2/no-informant/name-date-form" method="post">
 
-          <!-- <div class="govuk-form-group">
+          <div class="govuk-form-group">
             <fieldset class="govuk-fieldset" id="nameOrNot">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
                 Do the parents want to name their child?
@@ -48,21 +48,18 @@ href: "javascript:window.history.back()"
                 </div>
               </div>
             </fieldset>
-          </div> 
-           <div id="yes-name-block" style="display: none;">
-          -->
+          </div>
 
           <!-- Conditional block: Yes -->
-          <div id="yes-name-block">
+          <div id="yes-name-block" style="display: none;">
             <div class="govuk-form-group">
-              <label class="govuk-label govuk-label--s" for="deceased-first-name">First name (if given)</label>
-              <!-- <div id="dateOfDeath-hint" class="govuk-hint">First and middle names are optional for a stillborn child</div> -->
+              <label class="govuk-label govuk-label--s" for="deceased-first-name">First name (if available)</label>
               <input class="govuk-input govuk-!-width-one-half" id="deceased-first-name" name="deceasedFirstName"
                 type="text" value="{{data['deceasedFirstName']}}">
             </div>
 
             <div class="govuk-form-group">
-              <label class="govuk-label govuk-label--s" for="deceased-middle-name">Middle name 1 (if given)</label>
+              <label class="govuk-label govuk-label--s" for="deceased-middle-name">Middle name 1 (if available)</label>
               <input class="govuk-input govuk-!-width-one-half" id="deceased-middle-name" name="deceasedMiddleName"
                 type="text" value="{{data['deceasedMiddleName']}}">
               <p class="govuk-body">
@@ -137,14 +134,14 @@ href: "javascript:window.history.back()"
                       Only print last name
                     </label>
                   </div>
-                  <!-- <div class="govuk-radios__item">
+                  <div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="name-order-3" name="name-order" type="radio"
                       value="name-order-no-name" {{ checked("name-order", "name-order-no-name" ) }}
                       data-aria-controls="">
                     <label class="govuk-label govuk-radios__label" for="name-order-3">
                       Print no name
                     </label>
-                  </div> -->
+                  </div>
                   <div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="name-order-4" name="name-order" type="radio"
                       value="name-order-other" {{ checked("name-order", "name-order-other" ) }}
@@ -216,42 +213,136 @@ href: "javascript:window.history.back()"
   </fieldset>
 </div>
 
+      
 
-  <div class="govuk-form-group">
-    <fieldset class="govuk-fieldset">
-      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Date of stillbirth</legend>
-      <div id="dateOfDeath-hint" class="govuk-hint">For example, 23 11 2024</div>
-      <div id="dateOfDeath_input" class="govuk-date-input">
-        <div class="govuk-date-input__item">
-          <div class="govuk-form-group">
-            <label class="govuk-label govuk-date-input__label" for="dateOfDeath_input-day">Day</label>
-            <input id="dateOfDeath_input-day" name="dateOfDeath-day" inputmode="number" maxlength="2"
-              class="govuk-input govuk-input--width-2" aria-describedby="dateOfDeath-hint" autocomplete="off"
-              value="{{ data['dateOfDeath-day'] }}">
-          </div>
-        </div>
-        <div class="govuk-date-input__item">
-          <div class="govuk-form-group">
-            <label class="govuk-label govuk-date-input__label" for="dateOfDeath_input-month">Month</label>
-            <input id="dateOfDeath_input-month" name="dateOfDeath-month" inputmode="number" maxlength="2"
-              class="govuk-input govuk-input--width-2" aria-describedby="dateOfDeath-hint" autocomplete="off"
-              value="{{ data['dateOfDeath-month'] }}">
-          </div>
-        </div>
-        <div class="govuk-date-input__item">
-          <div class="govuk-form-group">
-            <label class="govuk-label govuk-date-input__label" for="dateOfDeath_input-year">Year</label>
-            <input id="dateOfDeath_input-year" name="dateOfDeath-year" inputmode="number" maxlength="4"
-              class="govuk-input govuk-input--width-4" aria-describedby="dateOfDeath-hint" autocomplete="off"
-              value="{{ data['dateOfDeath-year'] }}">
-          </div>
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <h1 class="govuk-fieldset__heading">
+        Is the exact date of stillbirth known?
+      </h1>
+    </legend>
+   
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="email" data-aria-controls="conditional-contact" checked>
+        <label class="govuk-label govuk-radios__label" for="contact">
+          Yes, their exact date of stillbirth
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+         <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Enter the date of stillbirth</legend>
+            <div id="dateOfDeath-hint" class="govuk-hint">For example, 23 11 2024.</div>
+            <div id="dateOfDeath_input" class="govuk-date-input">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="dateOfDeath_input-day">Day</label>
+                  <input id="dateOfDeath_input-day" name="dateOfDeath-day" inputmode="number" maxlength="2" class="govuk-input govuk-input--width-2" aria-describedby="dateOfDeath-hint" autocomplete="off" value="{{ data['dateOfDeath-day'] }}">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="dateOfDeath_input-month">Month</label>
+                  <input id="dateOfDeath_input-month" name="dateOfDeath-month" inputmode="number" maxlength="2" class="govuk-input govuk-input--width-2" aria-describedby="dateOfDeath-hint" autocomplete="off" value="{{ data['dateOfDeath-month'] }}">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="dateOfDeath_input-year">Year</label>
+                  <input id="dateOfDeath_input-year" name="dateOfDeath-year" inputmode="number" maxlength="4" class="govuk-input govuk-input--width-4" aria-describedby="dateOfDeath-hint" autocomplete="off" value="{{ data['dateOfDeath-year'] }}">
+                </div>
+              </div>
+            </div>
+          </fieldset>
         </div>
       </div>
-    </fieldset>
-  </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" data-aria-controls="conditional-contact-2">
+        <label class="govuk-label govuk-radios__label" for="contact-2">
+          No, only a partial date of stillbirth
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-2">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Enter the partial date of stillbirth</legend>
+            <div id="dateOfDeath-hint" class="govuk-hint">For example, 11 2024.</div>
+            <div id="dateOfDeath_input" class="govuk-date-input">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="dateOfDeath_input-month">Month</label>
+                  <input id="dateOfDeath_input-month" name="dateOfDeathPartial-month" inputmode="number" maxlength="2" class="govuk-input govuk-input--width-2" aria-describedby="dateOfDeath-hint" autocomplete="off" value="{{ data['dateOfDeathPartial-month'] }}">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="dateOfDeath_input-year">Year</label>
+                  <input id="dateOfDeath_input-year" name="dateOfDeathPartial-year" inputmode="number" maxlength="4" class="govuk-input govuk-input--width-4" aria-describedby="dateOfDeath-hint" autocomplete="off" value="{{ data['dateOfDeathPartial-year'] }}">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="contact-3" name="contact" type="radio" value="text" data-aria-controls="conditional-contact-3">
+        <label class="govuk-label govuk-radios__label" for="contact-3">
+          No, only the date when the stillborn was found
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-3">
+        <div id="dodQualifier_input" class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Select qualifier</legend>
+            <div class="govuk-radios">
+              <div class="govuk-radios__item"><input class="govuk-radios__input" type="radio" id="dodQualifier-1"
+                  name="dodQualifier" value="ON_OR_ABOUT"><label class="govuk-label govuk-radios__label"
+                  for="dodQualifier-1">On or about</label>
+                <div class="govuk-hint govuk-radios__hint">If place of stillbirth is known.</div>
+              </div>
+              <div class="govuk-radios__item"><input class="govuk-radios__input" type="radio" id="dodQualifier-2"
+                  name="dodQualifier" value="DECEASED_FOUND_ON"><label class="govuk-label govuk-radios__label"
+                  for="dodQualifier-2">Stillborn found on</label>
+                <div class="govuk-hint govuk-radios__hint">If only the place the stillborn was found is known.</div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Enter the date the stillborn was found</legend>
+            <div id="dateBodyFound-hint" class="govuk-hint">For example, 23 11 2024.</div>
+            <div id="dateBodyFound_input" class="govuk-date-input">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label"
+                    for="dateBodyFound_input-day">Day</label><input id="dateBodyFound_input-day" name="dateBodyFound-day"
+                    inputmode="number" maxlength="2" class="govuk-input govuk-input--width-2"
+                    aria-describedby="dateBodyFound-hint" autocomplete="off" value="{{ data['dateBodyFound-day'] }}"></div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label"
+                    for="dateBodyFound_input-month">Month</label><input id="dateBodyFound_input-month"
+                    name="dateBodyFound-month" inputmode="number" maxlength="2" class="govuk-input govuk-input--width-2"
+                    aria-describedby="dateBodyFound-hint" autocomplete="off" value="{{ data['dateBodyFound-month'] }}"></div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label"
+                    for="dateBodyFound_input-year">Year</label><input id="dateBodyFound_input-year" name="dateBodyFound-year"
+                    inputmode="number" maxlength="4" class="govuk-input govuk-input--width-4"
+                    aria-describedby="dateBodyFound-hint" autocomplete="off" value="{{ data['dateBodyFound-year'] }}"></div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
 
-       
 
+ 
 
           <div class="govuk-button-group">
             {{ govukButton({
@@ -268,7 +359,7 @@ href: "javascript:window.history.back()"
 
 
 
-<!-- Load the JS from views/v3/ -->
+<!-- Load the JS from views/v2/ -->
 
 
 

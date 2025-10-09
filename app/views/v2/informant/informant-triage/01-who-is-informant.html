@@ -1,0 +1,105 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+<span class="govuk-caption-l">Add record details</span>
+<h1 class="govuk-heading-l">Who is the informant?</h1>
+
+
+      <form class="form" action="/v2/informant/01-who-is-form" method="post">
+
+        
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  name: "whoIsInformant",
+ 
+
+  items: [
+    {
+      value: "mother",
+      text: "Mother",
+      checked: data['whoIsInformant'] == "Mother"
+    },
+    {
+      value: "father",
+      text: "Father",
+        checked: data['whoIsInformant'] == "Father"
+    },
+    {
+      value: "secondParent",
+      text: "Second parent",
+      checked: data['whoIsInformant'] == "Second parent"
+    },
+    {
+      value: "motherAndFather",
+      text: "Mother and father",
+      checked: data['whoIsInformant'] == "Mother and father"
+    },
+     {
+      value: "motherAndParent",
+      text: "Mother and second parent",
+      checked: data['whoIsInformant'] == "Second parent"
+    },
+     {
+      value: "otherInformant",
+      text: "Other",
+      checked: data['whoIsInformant'] == "Other",
+         conditional: {
+          html: govukRadios({
+            name: "userSbOtherDetail",
+            items: [
+              {
+                value: "sb-occupier",
+                text: "Occupier of where the stillbirth took place"
+              },
+               {
+                value: "sb-present",
+                text: "Person present at the stillbirth"
+              },
+               {
+                value: "sb-incharge",
+                text: "Person in charge of the stillbirth child"
+              },
+              {
+                value: "sb-found",
+                text: "Person who found the stillborn child"
+              }
+            ]
+          })
+        }
+    }
+  ]
+}) }}
+
+
+
+
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

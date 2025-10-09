@@ -1,0 +1,158 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Name and date of death – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+
+
+
+{{ govukBackLink({
+text: "Back to record",
+href: "javascript:window.history.back()"
+}) }}
+
+
+{% endblock %}
+
+{% block content %}
+
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">Stillborn child's details</span>
+    <h1 class="govuk-heading-l">
+      Parents' details
+    </h1>
+
+    <form class="form" action="/v2/no-informant/parents-details-form" method="post">
+
+
+ <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      Do you have the stillborn’s mother’s name?
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" type="radio" id="motherDetailsProvided-1"
+               name="motherDetailsProvided" value="YES"
+               data-aria-controls="conditional-motherDetailsProvided-1">
+        <label class="govuk-label govuk-radios__label" for="motherDetailsProvided-1">Yes</label>
+      </div>
+
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden"
+           id="conditional-motherDetailsProvided-1">
+            <div class="govuk-form-group">
+          <label class="govuk-label" for="mothersFirstName">First name or names</label>
+          <input id="mothersFirstName" name="mothersFirstName"
+                 class="govuk-input govuk-!-width-one-half" autocomplete="off" value="{{data['mothersFirstName']}}">
+        </div>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="mothersLastName">Last name</label>
+          <input id="mothersLastName" name="mothersLastName"
+                 class="govuk-input govuk-!-width-one-half" autocomplete="off" value="{{data['mothersLastName']}}">
+        </div>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="mothersOccupation">Occupation (if available)</label>
+          <input id="mothersOccupation" name="mothersOccupation"
+                 class="govuk-input govuk-!-width-one-half" autocomplete="off" value="{{data['mothersOccupation']}}">
+        </div>
+      </div>
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" type="radio" id="motherDetailsProvided-2"
+               name="motherDetailsProvided" value="NO">
+        <label class="govuk-label govuk-radios__label" for="motherDetailsProvided-2">No</label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Is there a father or second parent?
+          </legend>
+          <div class="govuk-radios">
+            <div class="govuk-radios__item"><input class="govuk-radios__input" type="radio" id="parentType-1"
+                name="parentType" value="FATHER" checked=""><label class="govuk-label govuk-radios__label"
+                for="parentType-1">Yes, a father</label></div>
+            <div class="govuk-radios__item"><input class="govuk-radios__input" type="radio" id="parentType-2"
+                name="parentType" value="SECOND_PARENT"><label class="govuk-label govuk-radios__label"
+                for="parentType-2">Yes, a second  parent</label></div>
+            <div class="govuk-radios__item"><input class="govuk-radios__input" type="radio" id="parentType-3"
+                name="parentType" value="NONE"><label class="govuk-label govuk-radios__label"
+                for="parentType-3">No</label></div>
+          </div>
+        </fieldset>
+      </div>
+    <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      Do you have the stillborn's father or second parent’s name?
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" type="radio"
+               id="secondParentDetailsProvided-1"
+               name="secondParentDetailsProvided"
+               value="YES"
+               data-aria-controls="conditional-secondParentDetailsProvided-1">
+        <label class="govuk-label govuk-radios__label" for="secondParentDetailsProvided-1">Yes</label>
+      </div>
+
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden"
+           id="conditional-secondParentDetailsProvided-1">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="fathersFirstName">First name(s)</label>
+          <input id="fathersFirstName" name="fathersFirstName"
+                 class="govuk-input govuk-!-width-one-half" autocomplete="off" value="{{data['fathersFirstName']}}">
+        </div>
+         <div class="govuk-form-group">
+          <label class="govuk-label" for="fathersLastName">Last name</label>
+          <input id="fathersLastName" name="fathersLastName"
+                 class="govuk-input govuk-!-width-one-half" autocomplete="off" value="{{data['fathersLastName']}}">
+        </div>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="secondParentOccupation_input">Occupation (if available)</label>
+          <input id="secondParentOccupation_input" name="secondParentOccupation"
+                 class="govuk-input govuk-!-width-one-half" autocomplete="off" value="{{data['mothersOccupation']}}">
+        </div>
+      </div>
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" type="radio"
+               id="secondParentDetailsProvided-2"
+               name="secondParentDetailsProvided"
+               value="NO">
+        <label class="govuk-label govuk-radios__label" for="secondParentDetailsProvided-2">No</label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+        text: "Save and return"
+        }) }}
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+
+
+
+
+<!-- Load the JS from views/v2/ -->
+
+
+
+{% endblock %}

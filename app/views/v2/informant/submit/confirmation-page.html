@@ -1,0 +1,50 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Confirmation page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukPanel({
+        titleText: "Registration complete",
+        html: "System reference number<br><strong>2851234333</strong>"
+      }) }}
+
+      <br>
+
+      <!-- <h2 class="govuk-heading-m">
+        What to do next
+      </h2> 
+-->
+      <p class="govuk-body">
+        You can now print the stillbirth certificate
+      </p>
+
+       <p  class="govuk-body govuk-!-margin-bottom-4">
+        <a href="#">
+          View and print standard certificate (opens in new tab)
+       
+        </a>
+      </p>
+        <p  class="govuk-body govuk-!-margin-bottom-9">
+        <a href="#">
+        
+          View and print short certificate (opens in new tab)
+        </a>
+      </p>
+
+      <p  class="govuk-body">
+        <a href="../../../01-life-event-home.html">
+          Go back to life events home
+        </a>
+      </p>
+
+
+    </div>
+  </div>
+
+{% endblock %}

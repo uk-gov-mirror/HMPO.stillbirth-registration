@@ -1,0 +1,160 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Name and date of death – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+
+
+
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+
+
+{% endblock %}
+
+{% block content %}
+
+
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l">
+         Search for a birth notification 
+        </h1>
+
+        <form class="form" action="03-child-correct" method="post">
+
+           <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Child's date of birth</legend>
+      <div id="dateOfDeath-hint" class="govuk-hint">For example, 23 11 2024.</div>
+      <div id="dateOfDeath_input" class="govuk-date-input">
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-date-input__label" for="dateOfDeath_input-day">Day</label>
+            <input id="dateOfDeath_input-day" name="dateOfDeath-day" inputmode="number" maxlength="2"
+              class="govuk-input govuk-input--width-2" aria-describedby="dateOfDeath-hint" autocomplete="off"
+              value="{{ data['dateOfDeath-day'] }}">
+          </div>
+        </div>
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-date-input__label" for="dateOfDeath_input-month">Month</label>
+            <input id="dateOfDeath_input-month" name="dateOfDeath-month" inputmode="number" maxlength="2"
+              class="govuk-input govuk-input--width-2" aria-describedby="dateOfDeath-hint" autocomplete="off"
+              value="{{ data['dateOfDeath-month'] }}">
+          </div>
+        </div>
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-date-input__label" for="dateOfDeath_input-year">Year</label>
+            <input id="dateOfDeath_input-year" name="dateOfDeath-year" inputmode="number" maxlength="4"
+              class="govuk-input govuk-input--width-4" aria-describedby="dateOfDeath-hint" autocomplete="off"
+              value="{{ data['dateOfDeath-year'] }}">
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+       
+
+     
+          <div id="yes-name-block" >
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--s" for="deceased-first-name">Mother's last name</label>
+              <input class="govuk-input govuk-!-width-one-half" id="deceased-first-name" name="deceasedFirstName"
+                type="text" value="{{data['deceasedFirstName']}}">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--s" for="deceased-middle-name">Mother's first name</label>
+              <input class="govuk-input govuk-!-width-one-half" id="deceased-middle-name" name="deceasedMiddleName"
+                type="text" value="{{data['deceasedMiddleName']}}">
+              
+            </div>
+          </div>
+
+
+          {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+{{ govukCheckboxes({
+  name: "organisation",
+  classes: "govuk-checkboxes--small",
+  fieldset: {
+    legend: {
+      text: "Filter births list",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  items: [
+    {
+      value: "hmrc",
+      text: "Stillbirths only"
+     
+    }
+  ]
+}) }}
+
+
+    <div id="yes-name-block" >
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--s" for="deceased-first-name">NHS number</label>
+              <input class="govuk-input govuk-!-width-one-half" id="deceased-first-name" name="deceasedNHSno"
+                type="text" value="{{data['deceasedNHSno']}}">
+            </div>
+
+       
+          </div>
+
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+
+{{ govukSelect({
+  id: "sort",
+  name: "sort",
+  label: {
+    html: '<strong class="govuk-label--s">District</strong>'
+  },
+  items: [
+    {
+      value: "published",
+      text: "Wakefield",
+      selected: true
+    },
+   
+    {
+      value: "views",
+      text: "All districts"
+    }
+  ]
+}) }}
+
+     
+
+          <div class="govuk-button-group">
+            {{ govukButton({
+            text: "Search"
+            }) }}
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+
+
+
+
+<!-- Load the JS from views/v2/ -->
+
+
+
+{% endblock %}
