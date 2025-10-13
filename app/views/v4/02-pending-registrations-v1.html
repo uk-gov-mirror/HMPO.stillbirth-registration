@@ -1,0 +1,150 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Pending registrations – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+
+ <form class="form" action="03-multiple" method="post">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-three-quarters govuk-!-margin-bottom-7">
+
+        <h1 class="govuk-heading-l">
+          Pending stillbirth registrations
+        </h1>
+<p>Outstanding NHS stillbirth notifications and saved pending records.</p>
+<p>If you cannot find the record you need, <a href="#">search all notifications</a>.</p>
+      </div>
+
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+<h2 class="govuk-heading-m">
+          Select a stillbirth to continue
+        </h2>
+
+     
+<table class="govuk-table govuk-table--small-text-until-tablet pending-table">
+  <caption class="govuk-table__caption govuk-table__caption--m govuk-visually-hidden">Pending registrations</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header"></th>
+      <th scope="col" class="govuk-table__header">Mother's name</th>
+      <th scope="col" class="govuk-table__header">Date and time</th>
+      <th scope="col" class="govuk-table__header">Place</th>
+      <th scope="col" class="govuk-table__header">Child's sex</th>
+      <th scope="col" class="govuk-table__header">NHS number</th>
+      <th scope="col" class="govuk-table__header">Status</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
+        <div class="govuk-radios govuk-radios--small" data-module="govuk-radios" data-govuk-radios-init="">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="banache_20250622" name="changedName" type="radio" value="banache_20250622">
+            <label class="govuk-label govuk-radios__label" for="banache_20250622"></label>
+          </div>
+        </div>
+      </td>
+      <td class="govuk-table__cell">BANACH, Emily</td>
+      <td class="govuk-table__cell">22/06/2025</br>22:30</td>
+      <td class="govuk-table__cell">Central Hospital</td>
+      <td class="govuk-table__cell">Male</td>
+      <td class="govuk-table__cell">389 446 7891</td>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--light-blue govuk-body-s">Started</strong></td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
+        <div class="govuk-radios govuk-radios--small" data-module="govuk-radios" data-govuk-radios-init="">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="shortc_20250706" name="changedName" type="radio" value="shortc_20250706">
+            <label class="govuk-label govuk-radios__label" for="shortc_20250706"></label>
+          </div>
+        </div>
+      </td>
+      <td class="govuk-table__cell">SHORT, Celine</td>
+      <td class="govuk-table__cell">06/07/2025</br>05:46</td>
+      <td class="govuk-table__cell">Queen Mary’s Hospital</td>
+      <td class="govuk-table__cell">Female</td>
+      <td class="govuk-table__cell">389 487 8922</td>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--yellow govuk-body-s">Not started</strong></td>
+    </tr>
+ 
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
+        <div class="govuk-radios govuk-radios--small" data-module="govuk-radios" data-govuk-radios-init="">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="husein_20250715" name="changedName" type="radio" value="husein_20250715">
+            <label class="govuk-label govuk-radios__label" for="husein_20250715"></label>
+          </div>
+        </div>
+      </td>
+      <td class="govuk-table__cell">HUSEIN, Lila</td>
+      <td class="govuk-table__cell">15/07/2025</br>10:30</td>
+      <td class="govuk-table__cell">Royal Free Hospital</td>
+      <td class="govuk-table__cell">Male</td>
+      <td class="govuk-table__cell">390 123 4567</td>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--light-blue govuk-body-s">Started</strong></td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
+        <div class="govuk-radios govuk-radios--small" data-module="govuk-radios" data-govuk-radios-init="">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="smith_20250801" name="changedName" type="radio" value="smith_20250801">
+            <label class="govuk-label govuk-radios__label" for="smith_20250801"></label>
+          </div>
+        </div>
+      </td>
+      <td class="govuk-table__cell">SMITH, Olivia</td>
+      <td class="govuk-table__cell">01/08/2025</br>14:15</td>
+      <td class="govuk-table__cell">St. Mary’s Hospital</td>
+      <td class="govuk-table__cell">Female</td>
+      <td class="govuk-table__cell">390 987 6543</td>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--yellow govuk-body-s">Not started</strong></td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
+        <div class="govuk-radios govuk-radios--small" data-module="govuk-radios" data-govuk-radios-init="">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="kovačević_20250810" name="changedName" type="radio" value="kovačević_20250810">
+            <label class="govuk-label govuk-radios__label" for="kovačević_20250810"></label>
+          </div>
+        </div>
+      </td>
+      <td class="govuk-table__cell">KOVAČEVIĆ, Mila</td>
+      <td class="govuk-table__cell">10/08/2025</br>11:45</td>
+      <td class="govuk-table__cell">University Hospital</td>
+      <td class="govuk-table__cell">Male</td>
+      <td class="govuk-table__cell">390 456 7890</td>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--light-blue govuk-body-s">Started</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+    </div>
+
+</div>
+</form>
+
+{% endblock %}

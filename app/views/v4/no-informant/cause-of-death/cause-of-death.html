@@ -1,0 +1,297 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Cause of death – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+
+{{ govukBackLink({
+text: "Back to record",
+href: "javascript:window.history.back()"
+}) }}
+
+<a class="govuk-link govuk-link--no-visited-state" href=""
+  style="display: inline-block; position: relative; float: right; top: 15px;">View accented characters (opens in new
+  window)</a>
+
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">Source of medical information</span>
+    <h1 class="govuk-heading-l">
+      Cause of death
+    </h1>
+    
+
+    <form class="form" action="/latest/no-informant/cause-of-death-form" method="post">
+
+      <h2 class="govuk-heading-m">About the inquest</h2>
+
+      <div class="govuk-form-group" data-testid="inquest-date"><label class="govuk-label govuk-!-font-weight-bold"
+          for="inquestDate">Inquest dates</label><input id="inquestDate" name="inquestDate"
+          class="govuk-input govuk-input--width-50" autocomplete="off" value="{{data['inquestDate']}}">
+        </div>
+       
+
+      <h2 class="govuk-heading-m">About the death</h2>
+      <div class="govuk-form-group" id="circledid">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+            <h1 class="govuk-fieldset__heading">
+              Was a post-mortem held?
+            </h1>
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="option_circled" name="option_circled" type="radio"
+                value="post_mortem" {{ checked("option_circled", "post_mortem" ) }}>
+              <label class="govuk-label govuk-radios__label" for="option_circled">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="option_circled-2" name="option_circled" type="radio"
+                value="available_later" {{ checked("option_circled", "available_later" ) }}>
+              <label class="govuk-label govuk-radios__label" for="option_circled-2">
+                No
+              </label>
+            </div>
+
+          </div>
+        </fieldset>
+      </div>
+
+
+
+      <div class="govuk-form-group" id="codid">
+        <fieldset class="govuk-fieldset" id="MCCDcause-of-death" aria-required="false">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+            <h3 class="govuk-fieldset__heading">
+              Cause of death
+            </h3>
+          </legend>
+
+
+
+          {{ govukTextarea({
+          name: "CauseOfDeath-a",
+          value: data['CauseOfDeath-a'] or [''],
+          id: "CauseOfDeath-a",
+          label: {
+          text: "(a) Main disease or conditions in infant ",
+          classes: "govuk-label-xs",
+          isPageHeading: true
+          }
+          }) }}
+
+
+          <p class="govuk-body">
+            <a href="#" class="govuk-link govuk-link--no-visited-state" id="addAnother" style="display:block">(b). Add
+              another disease or condition in infant</a>
+          </p>
+          <div id="Another"></div>
+
+          {% raw %}
+          <script>
+            var shownAnother = `
+                    <div class="govuk-form-group">
+                      <div class="horizontal-wrapper">
+                      <label class="govuk-label" for="causeOfdeath1b">
+                        (b). Another disease or condition in infant
+                      </label>
+                      <p class="govuk-body govuk-!-margin-bottom-1">
+                        <a href="#" class="govuk-link govuk-link--no-visited-state" id="removeAnother">Remove</a>
+                      </p>
+                      </div> 
+                      <textarea class="govuk-textarea govuk-!-margin-bottom-2" id="causeOfdeath1b" name="causeOfdeath1b" value="{{data['causeOfdeath1b']}}" rows="5"></textarea>
+                    </div>`;
+
+            function toggleAnother(event) {
+              event.preventDefault();
+              var AnotherDiv = document.getElementById('Another');
+              var addAnotherLink = document.getElementById('addAnother');
+              if (event.target.id === 'addAnother') {
+                AnotherDiv.innerHTML = shownAnother;
+                addAnotherLink.style.display = 'none';
+                document.getElementById('removeAnother').addEventListener('click', toggleAnother);
+                var newTextarea = document.getElementById('causeOfdeath1b');
+                new GOVUKFrontend.CharacterCount(newTextarea).init();
+              } else if (event.target.id === 'removeAnother') {
+                AnotherDiv.innerHTML = '';
+                addAnotherLink.style.display = 'block';
+              }
+            }
+
+            document.getElementById('addAnother').addEventListener('click', toggleAnother);
+          </script>
+          {% endraw %}
+
+
+        </fieldset>
+      </div>
+
+      <div class="govuk-form-group" id="cod-mat">
+        <fieldset class="govuk-fieldset" id="MCCDcause-of-death" aria-required="false">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+            <h3 class="govuk-fieldset__heading">
+              Cause of death - maternal diseases or conditions
+            </h3>
+          </legend>
+
+          {{ govukTextarea({
+          name: "CauseOfDeath-c",
+          value: data['CauseOfDeath-c'] or [''],
+          id: "CauseOfDeath-a",
+          label: {
+          text: "(c) Maternal disease or condition affecting infant (if provided)",
+          classes: "govuk-label-xs",
+          isPageHeading: true
+          }
+          }) }}
+
+
+          <p class="govuk-body">
+            <a href="#" class="govuk-link govuk-link--no-visited-state" id="addAnotherD" style="display:block">(d). Add
+              other maternal diseases or conditions affecting infant</a>
+          </p>
+          <div id="AnotherD"></div>
+
+          {% raw %}
+          <script>
+            var shownAnotherD = `
+                    <div class="govuk-form-group">
+                      <div class="horizontal-wrapper">
+                      <label class="govuk-label" for="causeOfdeathd">
+                        (d). Other maternal diseases or conditions affecting infant
+                      </label>
+                      <p class="govuk-body govuk-!-margin-bottom-1">
+                        <a href="#" class="govuk-link govuk-link--no-visited-state" id="removeAnotherD">Remove</a>
+                      </p>
+                      </div> 
+                      <textarea class="govuk-textarea govuk-!-margin-bottom-2" id="causeOfdeathd" name="causeOfdeathd" value="{{data['causeOfdeathd']}}" rows="5"></textarea>
+                    </div>`;
+
+            function toggleAnotherD(event) {
+              event.preventDefault();
+              var AnotherDivD = document.getElementById('AnotherD');
+              var addAnotherDLink = document.getElementById('addAnotherD');
+              if (event.target.id === 'addAnotherD') {
+                AnotherDivD.innerHTML = shownAnotherD;
+                addAnotherDLink.style.display = 'none';
+                document.getElementById('removeAnotherD').addEventListener('click', toggleAnotherD);
+                var newTextarea = document.getElementById('causeOfdeathd');
+                new GOVUKFrontend.CharacterCount(newTextarea).init();
+              } else if (event.target.id === 'removeAnotherD') {
+                AnotherDivD.innerHTML = '';
+                addAnotherDLink.style.display = 'block';
+              }
+            }
+
+            document.getElementById('addAnotherD').addEventListener('click', toggleAnotherD);
+          </script>
+          {% endraw %}
+
+          <p class="govuk-body">
+            <a href="#" class="govuk-link govuk-link--no-visited-state" id="addOther" style="display:block">(e). Add
+              other relevant causes</a>
+          </p>
+
+          <div id="Other"></div>
+
+          {% raw %}
+          <script>
+            var shownOther = `
+                    <div class="govuk-form-group">
+                      <div class="horizontal-wrapper">
+                      <label class="govuk-label" for="causeOfdeath2">
+                        (e). Other relevant causes 
+                      </label>
+                      <p class="govuk-body govuk-!-margin-bottom-1">
+                        <a href="#" class="govuk-link govuk-link--no-visited-state" id="removeOther">Remove</a>
+                      </p>
+                      </div> 
+                      <textarea class="govuk-textarea govuk-!-margin-bottom-2" id="causeOfdeath2" name="causeOfdeath2" value="{{data['causeOfdeath2']}}" rows="5"></textarea>
+                    </div>`;
+
+            function toggleOther(event) {
+              event.preventDefault();
+              var OtherDiv = document.getElementById('Other');
+              var addOtherLink = document.getElementById('addOther');
+              if (event.target.id === 'addOther') {
+                OtherDiv.innerHTML = shownOther;
+                addOtherLink.style.display = 'none';
+                document.getElementById('removeOther').addEventListener('click', toggleOther);
+                var newTextarea = document.getElementById('causeOfdeath2');
+                new GOVUKFrontend.CharacterCount(newTextarea).init();
+              } else if (event.target.id === 'removeOther') {
+                OtherDiv.innerHTML = '';
+                addOtherLink.style.display = 'block';
+              }
+            }
+
+            document.getElementById('addOther').addEventListener('click', toggleOther);
+          </script>
+          {% endraw %}
+
+
+          <!-- conclusion -->
+          <div class="govuk-form-group"><label class="govuk-label drw-cause-of-death-label"
+              for="conclusionDescription_input">Conclusion</label><textarea rows="5" id="conclusionDescription_input"
+              name="conclusionDescription" class="govuk-textarea "></textarea></div>
+          <p class="govuk-body">
+            <a href="#" class="govuk-link govuk-link--no-visited-state" id="addOther" style="display:block">Add a
+              narrative conclusion</a>
+          </p>
+
+
+        </fieldset>
+      </div>
+
+
+
+
+
+      <div class="govuk-form-group" id="cert-pract-path">
+        <fieldset class="govuk-fieldset" id="" aria-required="false">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+            Pathologist details
+          </legend>
+          <div class="govuk-form-group">
+            <label class="govuk-label" id="Pathologistfn" for="Pathologistfn">
+              Full name
+            </label>
+            <input class="govuk-input" id="Pathologistfn" name="Pathologistfn" type="text" aria-required="false"
+              value="{{data['Pathologistfn'] or ['']}}">
+          </div>
+          <div class="govuk-form-group">
+            <label class="govuk-label" id="Pathologistq" for="Pathologistq">
+              Qualifications
+            </label>
+            <input class="govuk-input" id="Pathologistq" name="Pathologistq" type="text" aria-required="false"
+              value="{{data['Pathologistq'] or ['']}}">
+          </div>
+
+
+        </fieldset>
+      </div>
+
+
+      <div class="govuk-button-group">
+        <button type="submit" class="govuk-button govuk-button--primary" data-module="govuk-button">
+          Continue
+        </button>
+      </div>
+    </form>
+  </div>
+
+
+
+
+  {% endblock %}

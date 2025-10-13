@@ -1,0 +1,147 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">
+        Is this the child you want to register?
+      </h1>
+
+
+      
+ <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          NHS number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          390 446 7891
+        </dd>
+        <dd class="govuk-summary-list__actions">
+         
+        </dd>
+      </div>
+      <!-- <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Live or stillbirth
+        </dt>
+        <dd class="govuk-summary-list__value">
+         Stillbirth
+        </dd>
+        <dd class="govuk-summary-list__actions">
+         
+        </dd>
+      </div> -->
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Date and time of birth
+        </dt>
+        <dd class="govuk-summary-list__value">
+          21 August 2015 10:15am
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Sex
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Male
+        </dd>
+        <dd class="govuk-summary-list__actions">
+         
+        </dd>
+      </div>
+       <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Mother's first name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Anna
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        
+      </div>
+       <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Mother's last name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          DUFFY
+        </dd>
+        <dd class="govuk-summary-list__actions">
+         
+        </dd>
+      </div>
+       <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Place of birth
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Central Hospital, Wakefield
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          
+        </dd>
+      </div>
+
+    </dl>  
+
+     <form action="04-medical-info" method="post" novalidate>
+
+    <!-- {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+
+{{ govukRadios({
+  name: "isChildLiveOrStill",
+  fieldset: {
+    legend: {
+      text: "Register the child as",
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  value: "stillborn", 
+  items: [
+    {
+      value: "live-born",
+      text: "Live born"
+    },
+    {
+      value: "stillborn",
+      text: "Stillborn"
+    }
+  ]
+}) }} -->
+
+
+
+   
+
+        {{ govukButton({
+          text: "Yes, continue"
+        }) }}
+
+      </form>
+
+       <div class="govuk-form-group">
+       <p class="govuk-body"><a href="02-search.html" class="govuk-link">No, return to search</a></p>
+      </div>   
+    </div>
+  </div>
+
+
+{% endblock %}

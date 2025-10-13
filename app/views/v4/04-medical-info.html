@@ -1,0 +1,62 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+<span class="govuk-caption-l">Add record details</span>
+<h1 class="govuk-heading-l">Where is the medical information about the stillbirth taken from?</h1>
+
+<form class="form" method="POST" action="/latest/task-list-form">
+  
+  {% from "govuk/components/radios/macro.njk" import govukRadios %}
+  {{ govukRadios({
+    name: "userMedicalInfoSource",
+    fieldset: {
+      legend: {
+        isPageHeading: false
+      }
+    },
+    items: [
+      {
+        value: "1-informant",
+        text: "Medical certificate of stillbirth (form 34)"
+      },
+      {
+        value: "2-cn2-with-inf",
+        text: "Coroner's post-mortem with informant (form CN2)"
+      },
+      {
+        value: "3-inquest-no-inf",
+        text: "Coroner's inquest (form 99A)"
+      },
+      {
+        value: "4-informant",
+        text: "Self declaration - no certificate from a medical practitioner available (form 35)"
+      }
+    ]
+  }) }}
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

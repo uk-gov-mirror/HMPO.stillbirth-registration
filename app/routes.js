@@ -30,6 +30,10 @@ require('./views/v3/_routes')(router);
 require('./views/v3/informant/_routes')(router);
 require('./views/v3/no-informant/_routes')(router);
 
+require('./views/v4/_routes')(router);
+require('./views/v4/informant/_routes')(router);
+require('./views/v4/no-informant/_routes')(router);
+
 module.exports = router;
 
 // 

@@ -1,0 +1,151 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back to record",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">Source of medical information</span>
+    <h1 class="govuk-heading-l">
+        Pregnancy and delivery
+      </h1> 
+
+        <h2 class="govuk-heading-m govuk-!-margin-bottom-6">
+               {% if data.userMedicalInfoSource == "1-informant" %}
+  Medical certificate of stillbirth (form 34)
+{% elif data.userMedicalInfoSource == "4-informant" %}
+  There was no medical professional involved (form 35)
+  
+{% else %}
+   Medical certificate of stillbirth (form-34)
+{% endif %}
+            </h2>
+     
+      <h2 class="govuk-heading-s">Estimated length of pregnancy</h2>
+
+      <form class="form" action="/latest/informant/pregnancy-del-form" method="post">
+
+        <div class="govuk-grid-row">
+          <div class="govuk-form-group">
+<div class="govuk-grid-column-one-quarter  govuk-!-margin-bottom-6">  
+  
+  {% from "govuk/components/input/macro.njk" import govukInput %}
+
+{{ govukInput({
+  id: "weeksPregnant",
+  name: "weeksPregnant",
+  label: {
+    text: "Weeks" 
+  },
+  suffix: {
+    text: "weeks"
+  },
+  classes: "govuk-input--width-3",
+  spellcheck: false,
+  value: data['weeksPregnant'] or ''
+}) }}  
+</div>
+<div class="govuk-grid-column-one-half">
+  {% from "govuk/components/input/macro.njk" import govukInput %}
+
+{{ govukInput({
+  label: {
+    text: "Days (if provided)"
+  },
+  classes: "govuk-input--width-3",
+  id: "daysPregnant",
+  name: "daysPregnant",
+  suffix: {
+    text: "days"
+  },
+  spellcheck: false,
+  value: data['daysPregnant'] or ''
+}) }}
+</div>
+</div>
+        </div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds  govuk-!-margin-bottom-6">
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  name: "whenDidChildDie",
+  fieldset: {
+    legend: {
+      text: "When did the child die?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  items: [
+    {
+      value: "beforeLabour",
+      text: "Before labour",
+      checked: data['whenDidChildDie'] == "beforeLabour"
+    },
+    {
+      value: "duringLabour",
+      text: "During labour",
+      checked: data['whenDidChildDie'] == "duringLabour"
+    },
+    {
+      value: "notKnown",
+      text: "Not known",
+      checked: data['whenDidChildDie'] == "notKnown"
+    }
+  ]
+}) }}
+
+  </div>
+</div>   
+
+  <div class="govuk-grid-row">
+<div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">  
+  
+  {% from "govuk/components/input/macro.njk" import govukInput %}
+
+{{ govukInput({
+  id: "weightOfChild",
+  name: "weightOfChild",
+  label: {
+    text: "Weight of the child (if provided)",
+    classes: "govuk-fieldset__legend--s"
+  },
+  suffix: {
+    text: "g"
+  },
+  classes: "govuk-input--width-5",
+  spellcheck: false,
+  value: data['weightOfChild'] or ''
+}) }}  
+</div>
+</div>
+
+
+
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+
+{% endblock %}
