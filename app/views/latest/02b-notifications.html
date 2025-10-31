@@ -29,26 +29,57 @@
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-three-quarters govuk-!-margin-bottom-4">
-<!-- <h2 class="govuk-heading-m">Search</h2> -->
-<p class="govuk-body"><a href="02b-search-no-nhs-no.html" class="govuk-link">Search all NHS birth notifications</a>, if you cannot see the notification you need.</p>
+
+  
+
+<p class="govuk-body "><a href="02-search-all.html" class="govuk-link"><span style="text-decoration: none;"><img src="/public/images/icon-magnifier.png" alt="Search icon" style="padding: 0 5px 0 0; margin-bottom: -5px;"></span>Search NHS birth notifications</a></p>
+
 </div>
 </div>
+
+
 
 
   <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
 <h2 class="govuk-heading-m">Select stillbirth notification</h2>
 
-<p class="govuk-body">Outstanding NHS birth notifications for stillbirths in Wakefield.</p>
+<p class="govuk-body">Outstanding NHS birth notifications for stillbirths.</p>
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+
+{{ govukSelect({
+  id: "sort",
+  name: "sort",
+  label: {
+    html: '<span class="govuk-label--s">District</span>'
+  },
+  items: [
+    {
+      value: "published",
+      text: "Wakefield",
+      selected: true
+    },
+   
+    {
+      value: "views",
+      text: "District 2"
+    },
+     {
+      value: "views",
+      text: "District 3 etc"
+    }
+  ]
+}) }}
 
 
 <table class="govuk-table govuk-table--small-text-until-tablet pending-table">
   <caption class="govuk-table__caption govuk-table__caption--m govuk-visually-hidden">Outstanding NHS birth notifications for stillbirths in Wakefield</caption>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header" style="padding-top: 10px;">Child's NHS number</th>
+      <th scope="col" class="govuk-table__header" style="padding-top: 10px; min-width: 150px;">Child's NHS number</th>
+      <th scope="col" class="govuk-table__header">Date of stillbirth</th>
       <th scope="col" class="govuk-table__header">Mother's name</th>
-      <th scope="col" class="govuk-table__header">Stillbirth date</th>
+      
       <th scope="col" class="govuk-table__header">Sex</th>
       <th scope="col" class="govuk-table__header">Place of stillbirth</th>
       
@@ -57,32 +88,36 @@
   <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
       <td class="govuk-table__cell" style="white-space: nowrap; padding-top: 15px;"><a href="03-child-correct" class="govuk-link govuk-body-svuk-table__cell" >390 446 7891</a></td>
+      <td class="govuk-table__cell">21 Oct2025</td>
       <td class="govuk-table__cell">DUFFY, Anna</td>
-      <td class="govuk-table__cell">21/08/2025</td>
+      
       <td class="govuk-table__cell">Male</td>
       <td class="govuk-table__cell">Central Hospital, Wakefield</td>
      
     </tr>
     <tr class="govuk-table__row">
       <td class="govuk-table__cell" style="white-space: nowrap; padding-top: 15px;"><a href="03-child-correct" class="govuk-link govuk-body-svuk-table__cell">390 123 4567</a></td>
+     <td class="govuk-table__cell">16 Oct 2025</td>
       <td class="govuk-table__cell">SHORT, Celine</td>
-      <td class="govuk-table__cell">06/07/2025</td>
+      
       <td class="govuk-table__cell">Female</td>
       <td class="govuk-table__cell">Queen Mary’s Hospital, Wakefield</td>
      
     </tr>
     <tr class="govuk-table__row">
       <td class="govuk-table__cell" style="white-space: nowrap; padding-top: 15px;"><a href="03-child-correct" class="govuk-link govuk-body-svuk-table__cell">390 123 4567</a></td>
+      <td class="govuk-table__cell">15 Sept 2025</td>
       <td class="govuk-table__cell">HUSEIN, Lila</td>
-      <td class="govuk-table__cell">15/07/2025</td>
+      
       <td class="govuk-table__cell">Male</td>
       <td class="govuk-table__cell">Royal Free Hospital, Wakefield</td>
     
     </tr>
     <tr class="govuk-table__row">
       <td class="govuk-table__cell" style="white-space: nowrap; padding-top: 15px;"><a href="03-child-correct" class="govuk-link govuk-body-svuk-table__cell">390 987 6543</a></td>
+     <td class="govuk-table__cell">2 Aug 2025</td>
       <td class="govuk-table__cell">SMITH, Olivia</td>
-      <td class="govuk-table__cell">01/08/2025</td>
+      
       <td class="govuk-table__cell">Female</td>
       <td class="govuk-table__cell">St. Mary’s Hospital, Wakefield</td>
      

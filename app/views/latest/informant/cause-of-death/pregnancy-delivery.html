@@ -32,13 +32,13 @@
 {% endif %}
             </h2>
      
-      <h2 class="govuk-heading-s">Estimated length of pregnancy</h2>
+      <h2 class="govuk-heading-s">Estimated length of pregnancy in weeks</h2>
 
       <form class="form" action="/latest/informant/pregnancy-del-form" method="post">
 
         <div class="govuk-grid-row">
           <div class="govuk-form-group">
-<div class="govuk-grid-column-one-quarter  govuk-!-margin-bottom-6">  
+<div class="govuk-grid-column-full  govuk-!-margin-bottom-6">  
   
   {% from "govuk/components/input/macro.njk" import govukInput %}
 
@@ -46,33 +46,17 @@
   id: "weeksPregnant",
   name: "weeksPregnant",
   label: {
-    text: "Weeks" 
+    text: "Do not enter any days recorded, only the weeks"
   },
   suffix: {
     text: "weeks"
   },
   classes: "govuk-input--width-3",
   spellcheck: false,
-  value: data['weeksPregnant'] or ''
+  value: data['weeksPregnant'] or ' '
 }) }}  
 </div>
-<div class="govuk-grid-column-one-half">
-  {% from "govuk/components/input/macro.njk" import govukInput %}
 
-{{ govukInput({
-  label: {
-    text: "Days (if provided)"
-  },
-  classes: "govuk-input--width-3",
-  id: "daysPregnant",
-  name: "daysPregnant",
-  suffix: {
-    text: "days"
-  },
-  spellcheck: false,
-  value: data['daysPregnant'] or ''
-}) }}
-</div>
 </div>
         </div>
 

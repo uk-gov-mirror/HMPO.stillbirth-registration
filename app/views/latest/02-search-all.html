@@ -30,6 +30,35 @@ href: "javascript:window.history.back()"
 
         <form class="form" action="03-child-correct" method="post">
 
+          {% from "govuk/components/select/macro.njk" import govukSelect %}
+
+{{ govukSelect({
+  id: "sort",
+  name: "sort",
+  label: {
+    html: '<strong class="govuk-label--s">District</strong>'
+  },
+  items: [
+    {
+      value: "published",
+      text: "Wakefield",
+      selected: true
+    },
+    {
+      value: "views",
+      text: "All districts"
+    },
+     {
+      value: "views",
+      text: "District 2"
+    },
+     {
+      value: "views",
+      text: "District 3 etc"
+    }
+  ]
+}) }}
+
            <div class="govuk-form-group">
     <fieldset class="govuk-fieldset">
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Child's date of birth</legend>
@@ -82,11 +111,11 @@ href: "javascript:window.history.back()"
           </div>
 
 
-          {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
-{{ govukCheckboxes({
-  name: "organisation",
-  classes: "govuk-checkboxes--small",
+{{ govukRadios({
+  classes: "govuk-radios--inline",
+  name: "changedName",
   fieldset: {
     legend: {
       text: "Filter births list",
@@ -94,11 +123,16 @@ href: "javascript:window.history.back()"
       classes: "govuk-fieldset__legend--s"
     }
   },
+ 
   items: [
     {
-      value: "hmrc",
+      value: "yes",
+      text: "Births and stillbirths",
+      checked: true
+    },
+    {
+      value: "no",
       text: "Stillbirths only"
-     
     }
   ]
 }) }}
@@ -114,27 +148,7 @@ href: "javascript:window.history.back()"
        
           </div>
 
-{% from "govuk/components/select/macro.njk" import govukSelect %}
 
-{{ govukSelect({
-  id: "sort",
-  name: "sort",
-  label: {
-    html: '<strong class="govuk-label--s">District</strong>'
-  },
-  items: [
-    {
-      value: "published",
-      text: "Wakefield",
-      selected: true
-    },
-   
-    {
-      value: "views",
-      text: "All districts"
-    }
-  ]
-}) }}
 
      
 

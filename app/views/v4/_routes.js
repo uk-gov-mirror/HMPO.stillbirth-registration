@@ -4,17 +4,17 @@ module.exports = function(router) {
 // Name and date
 
 
-// router.get('/latest/child-details/name-date', (req, res) => {
+// router.get('/v4/child-details/name-date', (req, res) => {
 //   res.sendFile(path.join(__dirname, 'child-details', 'name-date.html'));
 // });
 
   // TASK LIST
-  // router.get('/latest/informant/task-list-form', (req, res) => {
+  // router.get('/v4/informant/task-list-form', (req, res) => {
   //   req.session.data = req.session.data || {};
   //   res.render('task-list', { data: req.session.data });
   // });
 
-router.post('/latest/task-list-form', function (req, res) {
+router.post('/v4/task-list-form', function (req, res) {
 
    // Log the submitted form data
   console.log('Form submission:', req.body);
@@ -43,7 +43,7 @@ router.post('/latest/task-list-form', function (req, res) {
 });
 
 // Route for the informant task list
-router.get('/latest/informant/task-list-inf-form', function (req, res) {
+router.get('/v4/informant/task-list-inf-form', function (req, res) {
   res.render('informant/task-list', {
     userMedicalInfoSource: req.session.data['userMedicalInfoSource'],
     
@@ -51,7 +51,7 @@ router.get('/latest/informant/task-list-inf-form', function (req, res) {
 });
 
 // Route for the no-informant task list
-router.get('/latest/no-informant/task-list-noi-form', function (req, res) {
+router.get('/v4/no-informant/task-list-noi-form', function (req, res) {
   res.render('no-informant/task-list', {
     userMedicalInfoSource: req.session.data['userMedicalInfoSource'],
    
